@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { nanoid } from 'nanoid';
+// import { nanoid } from 'nanoid';
 import Notiflix from 'notiflix';
 import css from './ContactForm.module.css';
 import { addContact } from 'redux/contactsSlice';
@@ -36,15 +36,13 @@ const ContactForm = () => {
     const isDuplicate = contacts.some(
       contact => contact.name.toLowerCase() === name.toLowerCase()
     );
-
     if (isDuplicate) {
       Notiflix.Notify.failure(`${name} is already in your contacts.`);
       setName('');
       setNumber('');
       return;
     }
-
-    dispatch(addContact({ name, number, id: nanoid(5) }));
+    dispatch(addContact({ name, number }));
     setName('');
     setNumber('');
     Notiflix.Notify.success(`${name} added to your contacts.`);

@@ -6,7 +6,7 @@
 }
 .item {
   display: flex;
-  gap: 80px;
+  /* gap: 80px; */
   justify-content: space-between;
   align-items: center;
   padding: 5px;

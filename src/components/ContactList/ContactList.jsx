@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import css from './ContactList.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectContacts, selectFilteredContacts } from 'redux/selectors';
-import { deleteContact } from 'redux/contactsSlice';
+import { deleteContact, fetchAllContacts } from 'redux/contactsSlice';
 import Notiflix from 'notiflix';
 Notiflix.Notify.init({
   width: '280px',
@@ -14,8 +14,12 @@ Notiflix.Notify.init({
 const Contacts = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
+  console.log(contacts);
   const filter = useSelector(selectFilteredContacts);
   const filteredContacts = filter ? filter : contacts;
+  useEffect(() => {
+    dispatch(fetchAllContacts());
+  }, [dispatch]);
 
   return (
     <ul className={css.list}>
