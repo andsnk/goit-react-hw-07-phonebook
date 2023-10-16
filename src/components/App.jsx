@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Notiflix from 'notiflix';
 import ContactForm from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
 import Filter from './Filter/Filter';
-import { useSelector } from 'react-redux';
-import { selectContacts } from 'redux/selectors';
+// import { useSelector } from 'react-redux';
+// import { selectContacts } from 'redux/selectors';
 Notiflix.Notify.init({
   width: '280px',
   position: 'top',
@@ -13,11 +13,11 @@ Notiflix.Notify.init({
 });
 
 const App = () => {
-  const contacts = useSelector(selectContacts);
-  useEffect(() => {
-    Notiflix.Notify.info(`You have ${contacts.length} contacts`);
-    // eslint-disable-next-line
-  }, []);
+  // const contacts = useSelector(selectContacts);
+  // useEffect(() => {
+  //   // Notiflix.Notify.info(`You have ${contacts.length} contacts`);
+  //   // eslint-disable-next-line
+  // }, []);
 
   return (
     <div className="container">

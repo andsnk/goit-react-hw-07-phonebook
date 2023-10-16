@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import css from './ContactList.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectContacts, selectFilteredContacts } from 'redux/selectors';
-import { deleteContact, fetchAllContacts } from 'redux/contactsSlice';
+import { deleteContact, fetchAllContacts } from 'redux/thunks';
 import Notiflix from 'notiflix';
 Notiflix.Notify.init({
   width: '280px',

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 // import { nanoid } from 'nanoid';
 import Notiflix from 'notiflix';
 import css from './ContactForm.module.css';
-import { addContact } from 'redux/contactsSlice';
+import { addContact } from 'redux/thunks';
 import { selectContacts } from 'redux/selectors';
 Notiflix.Notify.init({
   width: '280px',
