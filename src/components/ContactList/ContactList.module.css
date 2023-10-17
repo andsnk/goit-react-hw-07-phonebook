@@ -83,3 +83,7 @@
     transform: translateX(-99%);
   }
 }
+
+.number {
+  color: inherit;
+}

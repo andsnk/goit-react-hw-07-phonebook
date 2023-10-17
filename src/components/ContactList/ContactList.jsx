@@ -40,7 +40,9 @@ const Contacts = () => {
         {filteredContacts.map(contact => (
           <li className={css.item} key={contact.id}>
             <span className={css.name}>{contact.name}:</span>
-            <span className={css.number}>{contact.number}</span>
+            <a href={`tel:${contact.number}`} className={css.number}>
+              {contact.number}
+            </a>
             <button
               className={css.deleteBtn}
               onClick={() => {
