@@ -30,6 +30,10 @@
   box-shadow: var(--box-shadow);
 }
 
+.number {
+  color: inherit;
+}
+
 .deleteBtn {
   border: none;
   cursor: pointer;
@@ -82,8 +86,4 @@
     left: 100%;
     transform: translateX(-99%);
   }
-}
-
-.number {
-  color: inherit;
 }
