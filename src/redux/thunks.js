@@ -10,11 +10,8 @@ export const fetchAllContacts = createAsyncThunk(
       Notiflix.Notify.info(`You have ${data.length} contacts`);
       return data;
     } catch (error) {
-      if (error.response && error.response.status === 404) {
-        return rejectWithValue({ status: 404, message: '404: Not Found' });
-      } else {
-        return rejectWithValue(error.message);
-      }
+      Notiflix.Notify.failure(error.message);
+      return rejectWithValue(error);
     }
   }
 );
@@ -24,13 +21,11 @@ export const addContact = createAsyncThunk(
   async (contact, { rejectWithValue }) => {
     try {
       const data = await addContactApi(contact);
+      Notiflix.Notify.success(`${data.name} added to your contacts.`);
       return data;
     } catch (error) {
-      if (error.response && error.response.status === 404) {
-        return rejectWithValue({ status: 404, message: '404: Not Found' });
-      } else {
-        return rejectWithValue(error.message);
-      }
+      Notiflix.Notify.failure(error.message);
+      return rejectWithValue(error);
     }
   }
 );
@@ -40,13 +35,11 @@ export const deleteContact = createAsyncThunk(
   async (contactId, { rejectWithValue }) => {
     try {
       const data = await deleteContactApi(contactId);
+      Notiflix.Notify.warning(`Contact ${data.name} has been deleted.`);
       return data;
     } catch (error) {
-      if (error.response && error.response.status === 404) {
-        return rejectWithValue({ status: 404, message: '404: Not Found' });
-      } else {
-        return rejectWithValue(error.message);
-      }
+      Notiflix.Notify.failure(error.message);
+      return rejectWithValue(error);
     }
   }
 );
