@@ -1,26 +1,30 @@
 export const handlePending = state => {
-    state.isLoading = true;
-  };
-  
-  export const handleRejected = (state, { payload }) => {
-    state.isLoading = false;
-    state.error = payload.error.message;
-  };
-  
-  export const handleFulfilled = state => {
-    state.isLoading = false;
-  };
-  
-  export const handleFulfilledAll = (state, { payload }) => {
-    state.items = payload;
-  };
-  
-  export const handleFulfilledAdd = (state, { payload }) => {
-    state.items.push(payload);
-  };
-  
-  export const handleFulfilledDelete = (state, { payload }) => {
-    state.error = null;
-    const index = state.items.findIndex(contact => contact.id === payload.id);
-    state.items.splice(index, 1);
-  };
+  state.isLoading = true;
+};
+
+export const handleRejected = (state, { payload }) => {
+  if (payload.status === 404) {
+    state.error = payload.message;
+  } else {
+    state.error = payload.message;
+  }
+  state.isLoading = false;
+};
+
+export const handleFulfilled = state => {
+  state.isLoading = false;
+};
+
+export const handleFulfilledAll = (state, { payload }) => {
+  state.items = payload;
+};
+
+export const handleFulfilledAdd = (state, { payload }) => {
+  state.items.push(payload);
+};
+
+export const handleFulfilledDelete = (state, { payload }) => {
+  state.error = null;
+  const index = state.items.findIndex(contact => contact.id === payload.id);
+  state.items.splice(index, 1);
+};

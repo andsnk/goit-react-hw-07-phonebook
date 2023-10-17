@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { nanoid } from 'nanoid';
 import Notiflix from 'notiflix';
 import css from './ContactForm.module.css';
 import { addContact } from 'redux/thunks';
-import { selectContacts } from 'redux/selectors';
+import { selectContacts, selectError } from 'redux/selectors';
 Notiflix.Notify.init({
   width: '280px',
   position: 'top',
@@ -13,10 +12,11 @@ Notiflix.Notify.init({
 });
 
 const ContactForm = () => {
-  const dispatch = useDispatch();
-  const contacts = useSelector(selectContacts);
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+  const dispatch = useDispatch();
+  const contacts = useSelector(selectContacts);
+  const error = useSelector(selectError);
 
   const handleChange = e => {
     const { name, value } = e.currentTarget;
@@ -45,7 +45,9 @@ const ContactForm = () => {
     dispatch(addContact({ name, number }));
     setName('');
     setNumber('');
-    Notiflix.Notify.success(`${name} added to your contacts.`);
+    if (!error) {
+      Notiflix.Notify.success(`${name} added to your contacts.`);
+    } else Notiflix.Notify.failure(error);
   };
 
   return (
