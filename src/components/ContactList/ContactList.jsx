@@ -23,7 +23,7 @@ const Contacts = () => {
 
   return (
     <>
-      {error && <p>{error}</p>}
+      {error && <p className={css.errorMessage}>error: {error}</p>}
       <div className={`${isLoading ? css.loader : css.noneLoader}`}></div>
       <ul className={`${css.list} ${isLoading && css.blurred}`}>
         {filteredContacts.map(contact => (

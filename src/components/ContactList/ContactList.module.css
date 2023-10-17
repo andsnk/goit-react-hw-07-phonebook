@@ -9,7 +9,7 @@
 
 .blurred {
   pointer-events: none;
-  filter: blur(4px);
+  filter: blur(1px);
   opacity: 0.6;
 }
 
@@ -83,4 +83,9 @@
     left: 100%;
     transform: translateX(-99%);
   }
+}
+
+.errorMessage {
+  color: #cc3329;
+  font-weight: 600;
 }

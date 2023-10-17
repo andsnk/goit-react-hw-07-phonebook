@@ -1,6 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { getContactsApi, addContactApi, deleteContactApi } from 'api/api';
 import Notiflix from 'notiflix';
+Notiflix.Notify.init({
+  width: '280px',
+  position: 'top',
+  distance: '30px',
+  opacity: 1,
+});
 
 export const fetchAllContacts = createAsyncThunk(
   'contacts/fetchAll',
@@ -10,7 +16,7 @@ export const fetchAllContacts = createAsyncThunk(
       Notiflix.Notify.info(`You have ${data.length} contacts`);
       return data;
     } catch (error) {
-      Notiflix.Notify.failure(error.message);
+      Notiflix.Report.failure('Oops, something is wrong', error.message);
       return rejectWithValue(error);
     }
   }
@@ -24,7 +30,7 @@ export const addContact = createAsyncThunk(
       Notiflix.Notify.success(`${data.name} added to your contacts.`);
       return data;
     } catch (error) {
-      Notiflix.Notify.failure(error.message);
+      Notiflix.Report.failure('Oops, something is wrong', error.message);
       return rejectWithValue(error);
     }
   }
@@ -38,7 +44,7 @@ export const deleteContact = createAsyncThunk(
       Notiflix.Notify.warning(`Contact ${data.name} has been deleted.`);
       return data;
     } catch (error) {
-      Notiflix.Notify.failure(error.message);
+      Notiflix.Report.failure('Oops, something is wrong', error.message);
       return rejectWithValue(error);
     }
   }

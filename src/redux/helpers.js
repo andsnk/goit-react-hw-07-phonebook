@@ -3,11 +3,7 @@ export const handlePending = state => {
 };
 
 export const handleRejected = (state, { payload }) => {
-  if (payload.status === 404) {
-    state.error = payload.message;
-  } else {
-    state.error = payload.message;
-  }
+  state.error = payload.message;
   state.isLoading = false;
 };
 
