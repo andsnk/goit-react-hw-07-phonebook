@@ -20,7 +20,6 @@
 
 .item {
   display: flex;
-  /* gap: 80px; */
   justify-content: space-between;
   align-items: center;
   padding: 5px;
@@ -67,9 +66,7 @@
   content: '';
   width: 96px;
   height: 4.8px;
-  /* background: #575757; */
   background: var(--top-color);
-
   position: absolute;
   top: 0;
   left: 0;
